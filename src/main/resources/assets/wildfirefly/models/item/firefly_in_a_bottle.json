@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/glass_bottle",
+    "layer1": "wildfirefly:item/firefly_in_a_bottle/white_firefly_in_a_bottle"
+  },
+  "overrides": [
+    {"predicate": {"wildfirefly:color": 0}, "model": "wildfirefly:item/firefly_in_a_bottle"},
+    {"predicate": {"wildfirefly:color": 0.0625}, "model": "wildfirefly:item/firefly_in_a_bottle_color/orange_firefly"},
+    {"predicate": {"wildfirefly:color": 0.125}, "model": "wildfirefly:item/firefly_in_a_bottle_color/magenta_firefly"},
+    {"predicate": {"wildfirefly:color": 0.1875}, "model": "wildfirefly:item/firefly_in_a_bottle_color/light_blue_firefly"},
+    {"predicate": {"wildfirefly:color": 0.25}, "model": "wildfirefly:item/firefly_in_a_bottle_color/yellow_firefly"},
+    {"predicate": {"wildfirefly:color": 0.3125}, "model": "wildfirefly:item/firefly_in_a_bottle_color/lime_firefly"},
+    {"predicate": {"wildfirefly:color": 0.375}, "model": "wildfirefly:item/firefly_in_a_bottle_color/pink_firefly"},
+    {"predicate": {"wildfirefly:color": 0.4375}, "model": "wildfirefly:item/firefly_in_a_bottle_color/gray_firefly"},
+    {"predicate": {"wildfirefly:color": 0.5}, "model": "wildfirefly:item/firefly_in_a_bottle_color/light_gray_firefly"},
+    {"predicate": {"wildfirefly:color": 0.5625}, "model": "wildfirefly:item/firefly_in_a_bottle_color/cyan_firefly"},
+    {"predicate": {"wildfirefly:color": 0.625}, "model": "wildfirefly:item/firefly_in_a_bottle_color/purple_firefly"},
+    {"predicate": {"wildfirefly:color": 0.6875}, "model": "wildfirefly:item/firefly_in_a_bottle_color/blue_firefly"},
+    {"predicate": {"wildfirefly:color": 0.75}, "model": "wildfirefly:item/firefly_in_a_bottle_color/brown_firefly"},
+    {"predicate": {"wildfirefly:color": 0.8125}, "model": "wildfirefly:item/firefly_in_a_bottle_color/green_firefly"},
+    {"predicate": {"wildfirefly:color": 0.875}, "model": "wildfirefly:item/firefly_in_a_bottle_color/red_firefly"},
+    {"predicate": {"wildfirefly:color":0.9375}, "model": "wildfirefly:item/firefly_in_a_bottle_color/black_firefly"},
+    {"predicate": {"wildfirefly:color":1}, "model": "wildfirefly:item/firefly_in_a_bottle_color/rainbow_firefly"}
+  ]
+}

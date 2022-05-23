@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "wildfirefly",
+  "version": "${version}",
+  "name": "WildFireFly",
+  "description": "",
+  "authors": [
+    "FireMuffin303"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "firemuffin303.wildfirefly.client.WildFireFlyClient"
+    ],
+    "main": [
+      "firemuffin303.wildfirefly.WildFireFly"
+    ]
+  },
+  "mixins": [
+    "wildfirefly.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.5",
+    "fabric": "*",
+    "minecraft": "1.19-beta.1"
+  }
+}
