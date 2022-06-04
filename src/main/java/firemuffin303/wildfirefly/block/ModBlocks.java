@@ -37,7 +37,7 @@ public class ModBlocks {
 
     private static void addBlock(String id,Block block){
         Registry.register(Registry.BLOCK, new Identifier(WildFireFly.MODID,id),block);
-        Registry.register(Registry.ITEM, new Identifier(WildFireFly.MODID,id),new BlockItem(block,new FabricItemSettings().group(WildFireFly.WILDFIREFYLE_TAB)));
+        Registry.register(Registry.ITEM, new Identifier(WildFireFly.MODID,id),new BlockItem(block,new FabricItemSettings().group(WildFireFly.WILDFIREFLY_TAB)));
     }
 
     public static void init(){

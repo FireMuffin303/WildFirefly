@@ -8,6 +8,8 @@ import net.minecraft.entity.ai.NoPenaltySolidTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.pathing.BirdNavigation;
+import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -42,7 +44,6 @@ public class FlyEntity extends AmbientEntity implements Bottleable {
 
     protected FlyEntity(EntityType<? extends AmbientEntity> entityType, World world) {
         super(entityType, world);
-        //this.moveControl = new FlightMoveControl(this, 20, true);
         this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER_BORDER, 16.0F);
@@ -58,16 +59,16 @@ public class FlyEntity extends AmbientEntity implements Bottleable {
             this.randomPos = null;
         }
 
-        if (this.randomPos == null || this.random.nextInt(30) == 0 || this.randomPos.isWithinDistance(this.getPos(), 2.0D)) {
-            this.randomPos = new BlockPos(this.getX() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7), this.getY() + (double)this.random.nextInt(4) - 2.0D, this.getZ() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7));
+        if (this.randomPos == null || this.random.nextInt(20) == 0 || this.randomPos.isWithinDistance(this.getPos(), 2.0D)) {
+            this.randomPos = new BlockPos(this.getX() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7), this.getY() + (double)this.random.nextInt(6) - 2.0D, this.getZ() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7));
         }
 
         double d = this.getX() + 0.5D - randomPos.getX();
-        double e = this.getY() + 0.01D - randomPos.getY();
+        double e = this.getY() + 0.5D - randomPos.getY();
         double f = this.getZ() + 0.5D - randomPos.getZ();
 
         Vec3d vec3d = this.getVelocity();
-        Vec3d vec3d2 = vec3d.add((Math.signum(d) * 0.5D - vec3d.x) * 0.02000000149011612D, (Math.signum(e) * 0.699999988079071D - vec3d.y) * 0.07500000149011612D, (Math.signum(f) * 0.5D - vec3d.z) * 0.02000000149011612D);
+        Vec3d vec3d2 = vec3d.add((Math.signum(d) * 0.5D - vec3d.x) * 0.00800000149011612D, (Math.signum(e) * 0.699999988079071D - vec3d.y) * 0.07500000149011612D, (Math.signum(f) * 0.5D - vec3d.z) * 0.00800000149011612D);
         this.setVelocity(vec3d2);
         float g = (float)(MathHelper.atan2(vec3d2.z, vec3d2.x) * 57.2957763671875D) - 90.0F;
         float h = MathHelper.wrapDegrees(g - this.getYaw());
@@ -88,8 +89,10 @@ public class FlyEntity extends AmbientEntity implements Bottleable {
     @Override
     public void tick() {
         super.tick();
-        this.setVelocity(this.getVelocity().multiply(1.0D, 0.6D, 1.0D));
+        this.setVelocity(this.getVelocity().multiply(1.0D, 0.2D, 1.0D));
     }
+
+
 
     public static DefaultAttributeContainer.Builder createFlyAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 5.0D);

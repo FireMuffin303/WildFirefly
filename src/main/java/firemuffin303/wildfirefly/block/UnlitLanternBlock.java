@@ -1,12 +1,13 @@
 package firemuffin303.wildfirefly.block;
 
 import com.google.common.collect.Maps;
-import firemuffin303.wildfirefly.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -32,6 +33,7 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
+            world.playSound(player,pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL,1.0F,1.0F);
             return ActionResult.SUCCESS;
 
         } else if(itemStack.isOf(Items.FLINT_AND_STEEL)){
@@ -39,6 +41,7 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
             itemStack.damage(1,player,(p) -> {
                 p.sendToolBreakStatus(hand);
             });
+            world.playSound(player,pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL,1.0F,1.0F);
             return ActionResult.SUCCESS;
 
         }

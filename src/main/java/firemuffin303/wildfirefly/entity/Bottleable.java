@@ -1,7 +1,5 @@
 package firemuffin303.wildfirefly.entity;
 
-import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -89,9 +86,9 @@ public interface Bottleable {
     static <T extends LivingEntity & Bottleable> Optional<ActionResult> tryBottle(PlayerEntity player, Hand hand, T entity) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.getItem() == Items.GLASS_BOTTLE && entity.isAlive()) {
-            entity.playSound(((Bottleable)entity).getBottleFillSound(), 1.0F, 1.0F);
-            ItemStack itemStack2 = ((Bottleable)entity).getBottleItem();
-            ((Bottleable)entity).copyDataToStack(itemStack2);
+            entity.playSound(entity.getBottleFillSound(), 1.0F, 1.0F);
+            ItemStack itemStack2 = entity.getBottleItem();
+            entity.copyDataToStack(itemStack2);
             ItemStack itemStack3 = ItemUsage.exchangeStack(itemStack, player, itemStack2, false);
             player.setStackInHand(hand, itemStack3);
             World world = entity.world;

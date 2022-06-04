@@ -9,13 +9,11 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.DyeColor;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.AbstractRandom;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -27,7 +25,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class FireFlyEntity extends SchoolingFly{
+public class FireFlyEntity extends FlyEntity{
     private static final Logger logger = LogUtils.getLogger();
     private static final TrackedData<Byte> COLOR;
     private static final Map<DyeColor, float[]> COLORS;
@@ -96,13 +94,13 @@ public class FireFlyEntity extends SchoolingFly{
         this.dataTracker.set(COLOR, (byte)(b & 240 | color.getId() & 15));
     }
 
-    public static boolean canSpawn(EntityType<FireFlyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, AbstractRandom random){
+    public static boolean canSpawn(EntityType<FireFlyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random){
         if (pos.getY() <= world.getSeaLevel()){
             return false;
         }else {
             int i = world.getLightLevel(pos);
             int j = 4;
-            return i > random.nextInt(j) ? false : canMobSpawn(type,world,spawnReason,pos,random);
+            return i <= random.nextInt(j) && canMobSpawn(type, world, spawnReason, pos, random);
         }
     }
 
@@ -117,7 +115,7 @@ public class FireFlyEntity extends SchoolingFly{
         if (spawnReason == SpawnReason.BUCKET) {
             return entityData;
         }else {
-            AbstractRandom abstractRandom = world.getRandom();
+            Random abstractRandom = world.getRandom();
             this.setColor(FireFlyEntity.FireFlyData.getRandomColor(abstractRandom));
             return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         }
@@ -128,17 +126,16 @@ public class FireFlyEntity extends SchoolingFly{
         COLORS = Maps.newEnumMap((Map)Arrays.stream(DyeColor.values()).collect(Collectors.toMap((dyeColor) -> dyeColor, FireFlyEntity::getDyedColor)));
     }
 
-    private static class FireFlyData extends SchoolingFly.FlyData {
+    private static class FireFlyData {
         final DyeColor dyeColor;
 
 
-        public FireFlyData(SchoolingFly leader, DyeColor dyeColor) {
-            super(leader);
+        public FireFlyData( DyeColor dyeColor) {
             this.dyeColor = dyeColor;
 
         }
 
-        public static DyeColor getRandomColor(AbstractRandom abstractRandom){
+        public static DyeColor getRandomColor(Random abstractRandom){
             DyeColor[] dyeColors = DyeColor.values();
             return dyeColors[abstractRandom.nextInt(dyeColors.length)];
         }

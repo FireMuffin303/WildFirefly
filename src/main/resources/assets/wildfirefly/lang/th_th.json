@@ -1,9 +1,9 @@
 {
   "itemGroup.wildfirefly.main": "Wild Firefly",
-  "item.wildfirefly.firefly_in_a_bottle": "Bottle of Firefly",
+  "item.wildfirefly.firefly_in_a_bottle": "หิ่งห้อยในขวด",
   "item.wildfirefly.firefly_spawn_egg": "Firefly Spawn Egg",
-  "color.wildfirefly.rainbow" : "Rainbow",
-  "block.wildfirefly.white_firefly_lantern": "White Firefly Lantern",
+  "color.wildfirefly.rainbow" : "รุ้ง",
+  "block.wildfirefly.white_firefly_lantern": "โคมไฟหิ่งห้อยสีขาว",
   "block.wildfirefly.orange_firefly_lantern": "Orange Firefly Lantern",
   "block.wildfirefly.magenta_firefly_lantern": "Magenta Firefly Lantern",
   "block.wildfirefly.light_blue_firefly_lantern": "Light Blue Firefly Lantern",
@@ -19,7 +19,7 @@
   "block.wildfirefly.green_firefly_lantern": "Green Firefly Lantern",
   "block.wildfirefly.red_firefly_lantern": "Red Firefly Lantern",
   "block.wildfirefly.black_firefly_lantern": "Black Firefly Lantern",
-  "block.wildfirefly.rainbow_firefly_lantern": "Rainbow Firefly Lantern",
-  "block.wildfirefly.unlit_lantern": "Unlit Lantern",
-  "entity.wildfirefly.firefly": "Firefly"
+  "block.wildfirefly.rainbow_firefly_lantern": "โคมไฟหิ่งห้อยสีรุ้ง",
+  "block.wildfirefly.unlit_lantern": "โคมไฟไม่ติดไฟ",
+  "entity.wildfirefly.firefly": "หิ่งห้อย"
 }

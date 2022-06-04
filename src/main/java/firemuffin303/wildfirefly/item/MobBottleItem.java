@@ -1,24 +1,16 @@
 package firemuffin303.wildfirefly.item;
 
 import firemuffin303.wildfirefly.entity.Bottleable;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.passive.TropicalFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -30,8 +22,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class MobBottleItem extends Item {
     private EntityType<?> entityType;
@@ -51,7 +41,7 @@ public class MobBottleItem extends Item {
         BlockPos blockPos2 = blockPos.offset(direction);
         if (blockHitResult.getType() != HitResult.Type.BLOCK){
             return TypedActionResult.pass(itemStack);
-        }else{
+        } else{
             this.onEmptied(user, world, itemStack, blockPos2);
             return TypedActionResult.success(getEmptiedStack(itemStack,user),world.isClient);
         }
