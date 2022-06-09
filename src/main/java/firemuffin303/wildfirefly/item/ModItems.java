@@ -4,6 +4,7 @@ import firemuffin303.wildfirefly.WildFireFly;
 import firemuffin303.wildfirefly.entity.ModEntities;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
