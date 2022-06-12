@@ -2,14 +2,19 @@
   "schemaVersion": 1,
   "id": "wildfirefly",
   "version": "${version}",
-  "name": "WildFireFly",
-  "description": "",
+  "name": "Wild FireFly",
+  "description": "Adds Fireflies and new firefly lanterns to Minecraft.",
   "authors": [
     "FireMuffin303"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://modrinth.com/mod/wildfirefly",
+    "sources": "https://github.com/FireMuffin303/WildFirefly",
+    "issues": "https://github.com/FireMuffin303/WildFirefly/issues"
+  },
   "license": "MIT",
   "environment": "*",
+  "color": "assets/wildfirefly/icon.png",
   "entrypoints": {
     "client": [
       "firemuffin303.wildfirefly.client.WildFireFlyClient"
