@@ -21,5 +21,8 @@
   "block.wildfirefly.black_firefly_lantern": "Black Firefly Lantern",
   "block.wildfirefly.rainbow_firefly_lantern": "Rainbow Firefly Lantern",
   "block.wildfirefly.unlit_lantern": "Unlit Lantern",
-  "entity.wildfirefly.firefly": "Firefly"
+  "entity.wildfirefly.firefly": "Firefly",
+
+  "modmenu.summaryTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft.",
+  "modmenu.descriptionTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft."
 }

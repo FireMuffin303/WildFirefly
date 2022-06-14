@@ -21,5 +21,8 @@
   "block.wildfirefly.black_firefly_lantern": "黑色萤火虫灯笼",
   "block.wildfirefly.rainbow_firefly_lantern": "彩色萤火虫灯笼",
   "block.wildfirefly.unlit_lantern": "未点亮的灯笼",
-  "entity.wildfirefly.firefly": "萤火虫"
+  "entity.wildfirefly.firefly": "萤火虫",
+
+  "modmenu.summaryTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft.",
+  "modmenu.descriptionTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft."
 }

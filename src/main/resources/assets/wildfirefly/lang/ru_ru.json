@@ -1,0 +1,28 @@
+{
+  "itemGroup.wildfirefly.main": "Wild Firefly",
+  "item.wildfirefly.firefly_in_a_bottle": "Светлячок в бутылочке",
+  "item.wildfirefly.firefly_spawn_egg": "Яйцо призыва светлячка",
+  "color.wildfirefly.rainbow" : "Радуга",
+  "block.wildfirefly.white_firefly_lantern": "Фонарь с белым светлячком",
+  "block.wildfirefly.orange_firefly_lantern": "Фонарь с оранжевым светлячком",
+  "block.wildfirefly.magenta_firefly_lantern": "Фонарь с пурпурным светлячком",
+  "block.wildfirefly.light_blue_firefly_lantern": "Фонарь с голубым светлячком",
+  "block.wildfirefly.yellow_firefly_lantern": "Фонарь с жёлтым светлячком",
+  "block.wildfirefly.lime_firefly_lantern": "Фонарь с лаймовым светлячком",
+  "block.wildfirefly.pink_firefly_lantern": "Фонарь с розовым светлячком",
+  "block.wildfirefly.gray_firefly_lantern": "Фонарь с серым светлячком",
+  "block.wildfirefly.light_gray_firefly_lantern": "Фонарь со светло-серым светлячком",
+  "block.wildfirefly.cyan_firefly_lantern": "Фонарь с бирюзовым светлячком",
+  "block.wildfirefly.purple_firefly_lantern": "Фонарь с фиолетовым светлячком",
+  "block.wildfirefly.blue_firefly_lantern": "Фонарь с синим светлячком",
+  "block.wildfirefly.brown_firefly_lantern": "Фонарь с коричневым светлячком",
+  "block.wildfirefly.green_firefly_lantern": "Фонарь с зелёным светлячком",
+  "block.wildfirefly.red_firefly_lantern": "Фонарь с красным светлячком",
+  "block.wildfirefly.black_firefly_lantern": "Фонарь с чёрным светлячком",
+  "block.wildfirefly.rainbow_firefly_lantern": "Фонарь с радужным светлячком",
+  "block.wildfirefly.unlit_lantern": "Пустой фонарь",
+  "entity.wildfirefly.firefly": "Светлячок",
+
+  "modmenu.summaryTranslation.wildfirefly": "Добавляет разноцветных светлячков и фонари с ними.",
+  "modmenu.descriptionTranslation.wildfirefly": "Добавляет разноцветных светлячков и фонари с ними."
+}
