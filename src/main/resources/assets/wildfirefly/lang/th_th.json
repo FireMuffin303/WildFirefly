@@ -21,5 +21,8 @@
   "block.wildfirefly.black_firefly_lantern": "โคมไฟหิ่งห้อยสีดำ",
   "block.wildfirefly.rainbow_firefly_lantern": "โคมไฟหิ่งห้อยสีรุ้ง",
   "block.wildfirefly.unlit_lantern": "โคมไฟไม่ติดไฟ",
-  "entity.wildfirefly.firefly": "หิ่งห้อย"
+  "entity.wildfirefly.firefly": "หิ่งห้อย",
+
+  "modmenu.summaryTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft.",
+  "modmenu.descriptionTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft."
 }
