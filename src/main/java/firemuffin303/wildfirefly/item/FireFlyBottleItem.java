@@ -6,9 +6,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
+import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
@@ -16,10 +22,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.util.DyeColor;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
@@ -51,27 +54,35 @@ public class FireFlyBottleItem extends MobBottleItem{
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        BlockHitResult blockHitResult = raycast(world,user, RaycastContext.FluidHandling.NONE);
-        BlockPos blockPos = blockHitResult.getBlockPos();
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        PlayerEntity user = context.getPlayer();
+        ItemStack itemStack = context.getStack();
+        World world = context.getWorld();
+        BlockPos blockPos = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockPos);
-        System.out.println(blockState.getBlock());
-        if(blockState.isOf(ModBlocks.UNLIT_LANTERN)){
-            if(itemStack.hasCustomName() && itemStack.getName().getString().equals("jeb_")){
-                user.setStackInHand(hand, ItemUsage.exchangeStack(itemStack, user, new ItemStack(Items.GLASS_BOTTLE)));
+        if (blockState.isOf(ModBlocks.UNLIT_LANTERN)) {
+            if (itemStack.hasCustomName() && itemStack.getName().getString().equals("jeb_")) {
                 world.playSound(user, blockPos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.NEUTRAL, 1.0F, 1.0F);
                 world.setBlockState(blockPos, ModBlocks.RAINBOW_FIREFLY_LANTERN.getStateWithProperties(blockState));
-            }else{
+            } else {
                 int i = itemStack.getOrCreateNbt().getInt("Color");
-                user.setStackInHand(hand, ItemUsage.exchangeStack(itemStack, user, new ItemStack(Items.GLASS_BOTTLE)));
                 world.playSound(user, blockPos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.NEUTRAL, 1.0F, 1.0F);
                 world.setBlockState(blockPos, FireflyColor().get(i).getStateWithProperties(blockState));
             }
-            return TypedActionResult.success(getEmptiedStack(itemStack,user));
-        }else{
-            return super.use(world, user, hand);
+            user.setStackInHand(context.getHand(),getEmptiedStack(itemStack,user));
+            return ActionResult.SUCCESS;
         }
+        return super.useOnBlock(context);
+    }
+    @Override
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if(entity instanceof FrogEntity frogEntity){
+            frogEntity.disableExperienceDropping();
+            frogEntity.damage(DamageSource.player(user),5F);
+            frogEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 900));
+            user.setStackInHand(hand, ItemUsage.exchangeStack(stack, user, new ItemStack(Items.GLASS_BOTTLE)));
+        }
+        return super.useOnEntity(stack, user, entity, hand);
     }
 
     private Map<Integer, Block> FireflyColor(){

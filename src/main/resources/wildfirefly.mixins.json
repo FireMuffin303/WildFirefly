@@ -4,6 +4,7 @@
   "package": "firemuffin303.wildfirefly.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "GlassBottleItemMixin"
   ],
   "client": [
   ],
