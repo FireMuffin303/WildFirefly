@@ -3,13 +3,17 @@ package firemuffin303.wildfirefly.entity;
 import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
 import firemuffin303.wildfirefly.item.ModItems;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
@@ -106,7 +110,9 @@ public class FireFlyEntity extends FlyEntity{
 
 
     public ItemStack getBottleItem() {
-        return new ItemStack(ModItems.FIREFLY_IN_A_BOTTLE);
+        return new ItemStack(bottle().get(getColor().getId()));
+
+
     }
 
     @Nullable
@@ -119,6 +125,27 @@ public class FireFlyEntity extends FlyEntity{
             this.setColor(FireFlyEntity.FireFlyData.getRandomColor(abstractRandom));
             return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         }
+    }
+
+    private Map<Integer, Item> bottle(){
+        Map<Integer,Item> map = Maps.newLinkedHashMap();
+        map.put(0,ModItems.WHITE_FIREFLY_IN_A_BOTTLE);
+        map.put(1,ModItems.ORANGE_FIREFLY_IN_A_BOTTLE);
+        map.put(2,ModItems.MAGENTA_FIREFLY_IN_A_BOTTLE);
+        map.put(3,ModItems.LIGHT_BLUE_FIREFLY_IN_A_BOTTLE);
+        map.put(4,ModItems.YELLOW_FIREFLY_IN_A_BOTTLE);
+        map.put(5,ModItems.LIME_FIREFLY_IN_A_BOTTLE);
+        map.put(6,ModItems.PINK_FIREFLY_IN_A_BOTTLE);
+        map.put(7,ModItems.GRAY_FIREFLY_IN_A_BOTTLE);
+        map.put(8,ModItems.LIGHT_GRAY_FIREFLY_IN_A_BOTTLE);
+        map.put(9,ModItems.CYAN_FIREFLY_IN_A_BOTTLE);
+        map.put(10,ModItems.PURPLE_FIREFLY_IN_A_BOTTLE);
+        map.put(11,ModItems.BLUE_FIREFLY_IN_A_BOTTLE);
+        map.put(12,ModItems.BROWN_FIREFLY_IN_A_BOTTLE);
+        map.put(13,ModItems.GREEN_FIREFLY_IN_A_BOTTLE);
+        map.put(14,ModItems.RED_FIREFLY_IN_A_BOTTLE);
+        map.put(15,ModItems.BLACK_FIREFLY_IN_A_BOTTLE);
+        return map;
     }
 
     static {

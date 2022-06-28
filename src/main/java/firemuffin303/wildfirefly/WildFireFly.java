@@ -2,6 +2,7 @@ package firemuffin303.wildfirefly;
 
 import firemuffin303.wildfirefly.block.ModBlocks;
 import firemuffin303.wildfirefly.entity.ModEntities;
+import firemuffin303.wildfirefly.item.ModItemTags;
 import firemuffin303.wildfirefly.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -22,6 +23,7 @@ public class WildFireFly implements ModInitializer {
         ModItems.init();
         ModBlocks.init();
         ModEntities.init();
+        ModItemTags.init();
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP,BiomeKeys.SWAMP), SpawnGroup.AMBIENT,ModEntities.FIREFLY,20,15,20);
     }

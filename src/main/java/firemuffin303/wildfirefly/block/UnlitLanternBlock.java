@@ -1,6 +1,7 @@
 package firemuffin303.wildfirefly.block;
 
 import com.google.common.collect.Maps;
+import firemuffin303.wildfirefly.item.ModItemTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -28,8 +29,16 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
         if (hand == Hand.MAIN_HAND && !isLightItem(itemStack) && isLightItem(player.getStackInHand(Hand.OFF_HAND))){
             return ActionResult.PASS;
 
-        }else if(isLightItem(itemStack)) {
-            world.setBlockState(pos, LightItem().get(itemStack.getItem()).getStateWithProperties(state));
+        }else if(itemStack.isIn(ModItemTags.LANTERN_INGREDIENT)) {
+            world.setBlockState(pos, Blocks.LANTERN.getStateWithProperties(state));
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+            world.playSound(player,pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL,1.0F,1.0F);
+            return ActionResult.SUCCESS;
+
+        }else if(itemStack.isIn(ModItemTags.SOUL_LANTERN_INGREDIENT)){
+            world.setBlockState(pos, Blocks.SOUL_LANTERN.getStateWithProperties(state));
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
