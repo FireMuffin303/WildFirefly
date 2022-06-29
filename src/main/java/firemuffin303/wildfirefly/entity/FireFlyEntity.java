@@ -110,7 +110,7 @@ public class FireFlyEntity extends FlyEntity{
 
 
     public ItemStack getBottleItem() {
-        return new ItemStack(bottle().get(getColor().getId()));
+        return new ItemStack(ModItems.FIREFLY_IN_A_BOTTLE);
 
 
     }
@@ -127,26 +127,6 @@ public class FireFlyEntity extends FlyEntity{
         }
     }
 
-    private Map<Integer, Item> bottle(){
-        Map<Integer,Item> map = Maps.newLinkedHashMap();
-        map.put(0,ModItems.WHITE_FIREFLY_IN_A_BOTTLE);
-        map.put(1,ModItems.ORANGE_FIREFLY_IN_A_BOTTLE);
-        map.put(2,ModItems.MAGENTA_FIREFLY_IN_A_BOTTLE);
-        map.put(3,ModItems.LIGHT_BLUE_FIREFLY_IN_A_BOTTLE);
-        map.put(4,ModItems.YELLOW_FIREFLY_IN_A_BOTTLE);
-        map.put(5,ModItems.LIME_FIREFLY_IN_A_BOTTLE);
-        map.put(6,ModItems.PINK_FIREFLY_IN_A_BOTTLE);
-        map.put(7,ModItems.GRAY_FIREFLY_IN_A_BOTTLE);
-        map.put(8,ModItems.LIGHT_GRAY_FIREFLY_IN_A_BOTTLE);
-        map.put(9,ModItems.CYAN_FIREFLY_IN_A_BOTTLE);
-        map.put(10,ModItems.PURPLE_FIREFLY_IN_A_BOTTLE);
-        map.put(11,ModItems.BLUE_FIREFLY_IN_A_BOTTLE);
-        map.put(12,ModItems.BROWN_FIREFLY_IN_A_BOTTLE);
-        map.put(13,ModItems.GREEN_FIREFLY_IN_A_BOTTLE);
-        map.put(14,ModItems.RED_FIREFLY_IN_A_BOTTLE);
-        map.put(15,ModItems.BLACK_FIREFLY_IN_A_BOTTLE);
-        return map;
-    }
 
     static {
         COLOR = DataTracker.registerData(FireFlyEntity.class, TrackedDataHandlerRegistry.BYTE);

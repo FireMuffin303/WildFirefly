@@ -11,8 +11,8 @@ public class ModItemTags {
     public static TagKey<Item> SOUL_LANTERN_INGREDIENT;
 
     public static void init(){
-       TagKey<Item> LANTERN_INGREDIENT = register("lantern_ingredient");
-       TagKey<Item> SOUL_LANTERN_INGREDIENT = register("soul_lantern_ingredient");
+       LANTERN_INGREDIENT = register("lantern_ingredients");
+       SOUL_LANTERN_INGREDIENT = register("soul_lantern_ingredients");
     }
 
     private static TagKey<Item> register(String key){

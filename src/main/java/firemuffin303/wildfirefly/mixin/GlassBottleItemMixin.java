@@ -5,18 +5,11 @@ import firemuffin303.wildfirefly.block.ModBlocks;
 import firemuffin303.wildfirefly.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-<<<<<<< Updated upstream
-import net.minecraft.block.Blocks;
-=======
->>>>>>> Stashed changes
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.GlassBottleItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-<<<<<<< Updated upstream
-=======
 import net.minecraft.item.ItemUsage;
->>>>>>> Stashed changes
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -39,21 +32,14 @@ public class GlassBottleItemMixin extends Item {
     public GlassBottleItemMixin(Settings settings) {
         super(settings);
     }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     @Inject(method = "use",at = @At("TAIL"),cancellable = true)
     public void use(World world, PlayerEntity user, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir) {
         ItemStack itemStack = user.getStackInHand(hand);
         BlockHitResult blockHitResult = raycast(world,user, RaycastContext.FluidHandling.NONE);
         BlockPos blockPos = blockHitResult.getBlockPos();
         BlockState blockState = world.getBlockState(blockPos);
-<<<<<<< Updated upstream
-        if(user.isSneaking()){
-=======
+
         if(user.isSneaking() && FireflyColor().containsKey(blockState.getBlock())){
->>>>>>> Stashed changes
             ItemStack itemStack1 = new ItemStack(ModItems.FIREFLY_IN_A_BOTTLE);
             NbtCompound nbtCompound = itemStack1.getOrCreateNbt();
             byte i = FireflyColor().get(blockState.getBlock()).byteValue();
@@ -62,24 +48,15 @@ public class GlassBottleItemMixin extends Item {
             if(blockState.isOf(ModBlocks.RAINBOW_FIREFLY_LANTERN)){
                 itemStack1.setCustomName(Text.literal("jeb_"));
             }
-<<<<<<< Updated upstream
-            world.playSound(user, blockPos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-            user.setStackInHand(hand,itemStack1);
-=======
             ItemStack itemStack2 = ItemUsage.exchangeStack(itemStack,user,itemStack1,false);
             world.playSound(user, blockPos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-            user.setStackInHand(hand,itemStack2);
->>>>>>> Stashed changes
+            cir.setReturnValue(TypedActionResult.success(itemStack2));
         }
     }
 
     private Map<Block, Integer> FireflyColor(){
         Map<Block,Integer> map = Maps.newLinkedHashMap();
-<<<<<<< Updated upstream
-        map.put(ModBlocks.WHITE_FIREFLY_LANTERN,0 );
-=======
         map.put(ModBlocks.WHITE_FIREFLY_LANTERN,0);
->>>>>>> Stashed changes
         map.put(ModBlocks.ORANGE_FIREFLY_LANTERN,1);
         map.put(ModBlocks.MAGENTA_FIREFLY_LANTERN,2);
         map.put(ModBlocks.LIGHT_BLUE_FIREFLY_LANTERN,3);

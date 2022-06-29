@@ -26,10 +26,7 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         ItemStack itemStack = player.getStackInHand(hand);
-        if (hand == Hand.MAIN_HAND && !isLightItem(itemStack) && isLightItem(player.getStackInHand(Hand.OFF_HAND))){
-            return ActionResult.PASS;
-
-        }else if(itemStack.isIn(ModItemTags.LANTERN_INGREDIENT)) {
+        if(itemStack.isIn(ModItemTags.LANTERN_INGREDIENT)) {
             world.setBlockState(pos, Blocks.LANTERN.getStateWithProperties(state));
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
@@ -55,18 +52,5 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
 
         }
         return  ActionResult.FAIL;
-    }
-
-    private boolean isLightItem(ItemStack itemStack){
-        return LightItem().containsKey(itemStack.getItem());
-    }
-
-
-
-    private Map<Item, Block> LightItem(){
-        Map<Item,Block> map = Maps.newLinkedHashMap();
-        map.put(Items.TORCH,Blocks.LANTERN);
-        map.put(Items.SOUL_TORCH,Blocks.SOUL_LANTERN);
-        return map;
     }
 }
