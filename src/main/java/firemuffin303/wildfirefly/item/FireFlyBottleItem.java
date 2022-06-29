@@ -60,7 +60,7 @@ public class FireFlyBottleItem extends MobBottleItem{
         World world = context.getWorld();
         BlockPos blockPos = context.getBlockPos();
         BlockState blockState = world.getBlockState(blockPos);
-        if (blockState.isOf(ModBlocks.UNLIT_LANTERN)) {
+        if (!user.isSneaking() && blockState.isOf(ModBlocks.UNLIT_LANTERN)) {
             if (itemStack.hasCustomName() && itemStack.getName().getString().equals("jeb_")) {
                 world.playSound(user, blockPos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.NEUTRAL, 1.0F, 1.0F);
                 world.setBlockState(blockPos, ModBlocks.RAINBOW_FIREFLY_LANTERN.getStateWithProperties(blockState));
