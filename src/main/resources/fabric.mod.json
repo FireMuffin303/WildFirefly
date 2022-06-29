@@ -23,6 +23,9 @@
       "firemuffin303.wildfirefly.WildFireFly"
     ]
   },
+  "mixins": [
+    "wildfirefly.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.14.5",
     "fabric": "*",

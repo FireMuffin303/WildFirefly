@@ -41,7 +41,7 @@ public class MobBottleItem extends Item {
         BlockPos blockPos = context.getBlockPos();
         Direction direction = context.getSide();
         BlockPos blockPos2 = blockPos.offset(direction);
-        this.onEmptied(context.getPlayer(), context.getWorld(), context.getStack(), blockPos2);
+        this.onEmptied(user, context.getWorld(), itemStack, blockPos2);
         user.setStackInHand(context.getHand(),getEmptiedStack(itemStack,user));
         return ActionResult.SUCCESS;
 
