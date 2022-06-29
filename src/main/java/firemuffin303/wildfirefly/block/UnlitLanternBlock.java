@@ -1,6 +1,7 @@
 package firemuffin303.wildfirefly.block;
 
 import com.google.common.collect.Maps;
+import firemuffin303.wildfirefly.item.ModItemTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -25,16 +26,22 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         ItemStack itemStack = player.getStackInHand(hand);
-        if (hand == Hand.MAIN_HAND && !isLightItem(itemStack) && isLightItem(player.getStackInHand(Hand.OFF_HAND))){
-            return ActionResult.PASS;
-
-        }else if(isLightItem(itemStack)) {
-            world.setBlockState(pos, LightItem().get(itemStack.getItem()).getStateWithProperties(state));
+         if(itemStack.isIn(ModItemTags.LANTERN_INGREDIENT)) {
+            world.setBlockState(pos, Blocks.LANTERN.getStateWithProperties(state));
             if (!player.getAbilities().creativeMode) {
                 itemStack.decrement(1);
             }
             world.playSound(player,pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL,1.0F,1.0F);
             return ActionResult.SUCCESS;
+
+        }else if(itemStack.isIn(ModItemTags.SOUL_LANTERN_INGREDIENT)){
+            world.setBlockState(pos, Blocks.SOUL_LANTERN.getStateWithProperties(state));
+            if (!player.getAbilities().creativeMode) {
+                itemStack.decrement(1);
+            }
+            world.playSound(player,pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.NEUTRAL,1.0F,1.0F);
+            return ActionResult.SUCCESS;
+
 
         } else if(itemStack.isOf(Items.FLINT_AND_STEEL)){
             world.setBlockState(pos, Blocks.LANTERN.getStateWithProperties(state));
@@ -48,16 +55,4 @@ public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
         return  ActionResult.FAIL;
     }
 
-    private boolean isLightItem(ItemStack itemStack){
-        return LightItem().containsKey(itemStack.getItem());
-    }
-
-
-
-    private Map<Item, Block> LightItem(){
-        Map<Item,Block> map = Maps.newLinkedHashMap();
-        map.put(Items.TORCH,Blocks.LANTERN);
-        map.put(Items.SOUL_TORCH,Blocks.SOUL_LANTERN);
-        return map;
-    }
 }
