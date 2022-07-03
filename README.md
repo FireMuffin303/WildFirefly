@@ -14,6 +14,7 @@ A Minecraft mod which add Firefly, and They have many colors as Sheep does!
 - Obtains by use bottle on Fireflies.
 - Use to release a firefly inside.
 - Use on Unlit Lantern to get Colored Firefly Lantern. (yes, rainbow fireflies work.)
+- Can feed frogs, but they will get poison, take 5 damage and not drop any EXP.
 ## Colored Firefly Lantern
 ![Colored Firefly Lantern](https://i.imgur.com/IYtxVcs.png)
 - Colored Firefly Lantern has every color.
@@ -25,11 +26,19 @@ A Minecraft mod which add Firefly, and They have many colors as Sheep does!
 - Can be ignited and turn into other lantern blocks by list below
 
 | Item              | Lantern         |
-|-------------------|-----------------|
+| ----------------- | --------------- |
 | Flint and Steel   | Lantern         |
-| Torch             | Lantern         |
-| Soul Torch        | Soul Lantern    |
+| Items with "**lantern_ingredients**" tag | Lantern         | 
+| Items with "**soul_ lantern_ingredients**" tag |  Soul Lantern         | 
 | Bottle of Firefly | Firefly Lantern |
+
+## Item Tags
+**lantern_ingredients**
+- Torch
+
+**soul_lantern_ingredients**
+- Soul Torch
+
 ## Languages
 | Language           | Language Codes | Author        |
 |--------------------|----------------|---------------|
