@@ -2,6 +2,7 @@ package firemuffin303.wildfirefly.client.render.entity;
 
 import firemuffin303.wildfirefly.WildFireFly;
 import firemuffin303.wildfirefly.entity.FireFlyEntity;
+import firemuffin303.wildfirefly.utils.ModConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -34,6 +35,7 @@ public class FireFlyEntityRenderer extends EntityRenderer<FireFlyEntity> {
         matrixStack.multiply(this.dispatcher.getRotation());
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
         float red, green, blue;
+        float black[] = FireFlyEntity.getRgbColor(DyeColor.BLACK);
         boolean bl = fireFlyEntity.hasCustomName() && "jeb_".equals(fireFlyEntity.getName().getString());
         if(bl){
             int n = fireFlyEntity.age/25+fireFlyEntity.getId();
@@ -55,6 +57,7 @@ public class FireFlyEntityRenderer extends EntityRenderer<FireFlyEntity> {
             green = g >= 1 ? 1 : g;
             blue = b >= 1 ? 1 : b;
         }
+
 
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(LAYER);
 
@@ -82,6 +85,11 @@ public class FireFlyEntityRenderer extends EntityRenderer<FireFlyEntity> {
 
     @Override
     protected int getBlockLight(FireFlyEntity entity, BlockPos pos) {
-        return 15;
+        if(ModConfig.flickeringFirefly){
+            int i = (int)MathHelper.clampedLerp(0.0F, 15.0F,(1.0F - (float)entity.getLightTicksRemaining() / 10.0F));
+            return i == 15? 15 : Math.max(i, super.getBlockLight(entity, pos));
+        }else {
+            return 15;
+        }
     }
 }

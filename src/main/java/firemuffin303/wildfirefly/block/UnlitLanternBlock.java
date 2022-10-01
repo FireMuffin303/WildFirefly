@@ -1,10 +1,11 @@
 package firemuffin303.wildfirefly.block;
 
-import com.google.common.collect.Maps;
 import firemuffin303.wildfirefly.item.ModItemTags;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LanternBlock;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
@@ -14,8 +15,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.Map;
 
 public class UnlitLanternBlock extends LanternBlock implements Waterloggable {
 

@@ -6,13 +6,16 @@ import firemuffin303.wildfirefly.item.ModItems;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.passive.GlowSquidEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -26,10 +29,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FireFlyEntity extends FlyEntity{
+    private static final TrackedData<Integer> LIGHT_TICKS_REMAINING;
+
     private static final Logger logger = LogUtils.getLogger();
     private static final TrackedData<Byte> COLOR;
     private static final Map<DyeColor, float[]> COLORS;
 
+    int a;
     private static float[] getDyedColor(DyeColor color) {
         if (color == DyeColor.WHITE) {
             return new float[]{0.9019608F, 0.9019608F, 0.9019608F};
@@ -53,9 +59,41 @@ public class FireFlyEntity extends FlyEntity{
     }
 
     @Override
+    public boolean damage(DamageSource source, float amount) {
+        boolean bl = super.damage(source, amount);
+        if (bl) {
+            this.setLightTicksRemaining(100);
+        }
+        return bl;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        int i = this.getLightTicksRemaining();
+        //this is stupid, I know.
+        //my math is bad, okay?
+        if (i > 15) {
+            a = -1;
+        }else if(i <= 0){
+            a = 1;
+        }
+        this.setLightTicksRemaining(i + a);
+    }
+
+    private void setLightTicksRemaining(int ticks) {
+        this.dataTracker.set(LIGHT_TICKS_REMAINING, ticks);
+    }
+
+    public int getLightTicksRemaining() {
+        return (Integer)this.dataTracker.get(LIGHT_TICKS_REMAINING);
+    }
+
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(COLOR,(byte)0);
+        this.dataTracker.startTracking(LIGHT_TICKS_REMAINING, 0);
     }
 
 
@@ -124,6 +162,7 @@ public class FireFlyEntity extends FlyEntity{
     static {
         COLOR = DataTracker.registerData(FireFlyEntity.class, TrackedDataHandlerRegistry.BYTE);
         COLORS = Maps.newEnumMap((Map)Arrays.stream(DyeColor.values()).collect(Collectors.toMap((dyeColor) -> dyeColor, FireFlyEntity::getDyedColor)));
+        LIGHT_TICKS_REMAINING = DataTracker.registerData(FireFlyEntity.class, TrackedDataHandlerRegistry.INTEGER);
     }
 
     private static class FireFlyData {

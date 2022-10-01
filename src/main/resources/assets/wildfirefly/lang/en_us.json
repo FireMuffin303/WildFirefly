@@ -24,5 +24,8 @@
   "entity.wildfirefly.firefly": "Firefly",
 
   "modmenu.summaryTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft.",
-  "modmenu.descriptionTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft."
+  "modmenu.descriptionTranslation.wildfirefly": "Adds Fireflies and new firefly lanterns to Minecraft.",
+
+  "text.autoconfig.wildfirefly.title": "Wild Firefly Option.",
+  "text.autoconfig.wildfirefly.option.flickeringFirefly": "Fireflies flickering."
 }

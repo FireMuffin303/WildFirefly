@@ -12,27 +12,27 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ModBlocks {
-    public static final Block WHITE_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block ORANGE_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block MAGENTA_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block LIGHT_BLUE_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block YELLOW_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block LIME_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block PINK_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block GRAY_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block LIGHT_GRAY_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block CYAN_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block PURPLE_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block BLUE_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block BROWN_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block GREEN_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block RED_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block BLACK_FIREFLY_LANTERN = createLanternBlock(8);
-    public static final Block RAINBOW_FIREFLY_LANTERN = createLanternBlock(12);
+    public static final Block WHITE_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block ORANGE_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block MAGENTA_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block LIGHT_BLUE_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block YELLOW_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block LIME_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block GRAY_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block PINK_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block LIGHT_GRAY_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block CYAN_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block PURPLE_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block BLUE_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block BROWN_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block GREEN_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block RED_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block BLACK_FIREFLY_LANTERN = createLanternBlock();
+    public static final Block RAINBOW_FIREFLY_LANTERN = createLanternBlock();
     public static final Block UNLIT_LANTERN = new UnlitLanternBlock(FabricBlockSettings.of(Material.METAL).requiresTool().strength(3.5F).sounds(BlockSoundGroup.LANTERN));
 
-    private static LanternBlock createLanternBlock(int luminance){
-        return new LanternBlock(FabricBlockSettings.of(Material.METAL).requiresTool().strength(3.5F).sounds(BlockSoundGroup.LANTERN).luminance(luminance));
+    private static LanternBlock createLanternBlock(){
+        return new LanternBlock(FabricBlockSettings.of(Material.METAL).requiresTool().strength(3.5F).sounds(BlockSoundGroup.LANTERN).luminance(15));
     }
 
     private static void addBlock(String id,Block block){

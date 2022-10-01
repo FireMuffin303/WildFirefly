@@ -21,11 +21,15 @@
     ],
     "main": [
       "firemuffin303.wildfirefly.WildFireFly"
-    ]
+    ],
+    "modmenu": [ "firemuffin303.wildfirefly.utils.ModMenuIntegration" ]
   },
   "depends": {
     "fabricloader": ">=0.14.5",
     "fabric": "*",
     "minecraft": "1.19"
+  },
+  "recommends": {
+    "modmenu": ">=3.0.0"
   }
 }
