@@ -20,6 +20,7 @@ import net.minecraft.world.biome.BiomeKeys;
 public class WildFireFly implements ModInitializer {
     public static final String MODID = "wildfirefly";
     public static final ItemGroup WILDFIREFLY_TAB = FabricItemGroupBuilder.build( new Identifier(MODID,"main"),() -> new ItemStack(ModItems.FIREFLY_IN_A_BOTTLE));
+    public static ModConfig CONFIG;
 
     @Override
     public void onInitialize() {
@@ -28,6 +29,7 @@ public class WildFireFly implements ModInitializer {
         ModEntities.init();
         ModItemTags.init();
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        WildFireFly.CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP,BiomeKeys.SWAMP), SpawnGroup.AMBIENT,ModEntities.FIREFLY,20,15,20);
     }

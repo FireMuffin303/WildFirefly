@@ -3,6 +3,7 @@ package firemuffin303.wildfirefly.client.render.entity;
 import firemuffin303.wildfirefly.WildFireFly;
 import firemuffin303.wildfirefly.entity.FireFlyEntity;
 import firemuffin303.wildfirefly.utils.ModConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -85,7 +86,7 @@ public class FireFlyEntityRenderer extends EntityRenderer<FireFlyEntity> {
 
     @Override
     protected int getBlockLight(FireFlyEntity entity, BlockPos pos) {
-        if(ModConfig.flickeringFirefly){
+        if(AutoConfig.getConfigHolder(ModConfig.class).getConfig().flickeringFirefly){
             int i = (int)MathHelper.clampedLerp(0.0F, 15.0F,(1.0F - (float)entity.getLightTicksRemaining() / 10.0F));
             return i == 15? 15 : Math.max(i, super.getBlockLight(entity, pos));
         }else {
