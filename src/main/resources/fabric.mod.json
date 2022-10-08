@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "environment": "*",
-  "color": "assets/wildfirefly/icon.png",
+  "icon": "assets/wildfirefly/icon.png",
   "entrypoints": {
     "client": [
       "firemuffin303.wildfirefly.client.WildFireFlyClient"
@@ -25,9 +25,11 @@
     "modmenu": [ "firemuffin303.wildfirefly.utils.ModMenuIntegration" ]
   },
   "depends": {
-    "fabricloader": ">=0.14.5",
+    "fabricloader": "*",
     "fabric": "*",
-    "minecraft": "1.19"
+    "minecraft": ">=1.19",
+    "java": ">=1.17",
+    "cloth-config2": ">=7.0.73"
   },
   "recommends": {
     "modmenu": ">=3.0.0"

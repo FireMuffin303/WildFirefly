@@ -1,1 +1,8 @@
-{"variants": {"hanging=false": {"model": "wildfirefly:block/black_firefly_lantern"},"hanging=true": {"model": "wildfirefly:block/black_firefly_lantern_hanging"}}}
+{
+  "variants": {
+    "hanging=false":
+      {"model": "wildfirefly:block/black_firefly_lantern"},
+    "hanging=true":
+      {"model": "wildfirefly:block/black_firefly_lantern_hanging"}
+  }
+}
