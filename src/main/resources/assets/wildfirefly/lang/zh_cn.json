@@ -23,6 +23,9 @@
   "block.wildfirefly.unlit_lantern": "未点亮的灯笼",
   "entity.wildfirefly.firefly": "萤火虫",
 
-  "modmenu.summaryTranslation.wildfirefly": "添加萤火虫和新的萤火虫灯笼至Minecraft。",
-  "modmenu.descriptionTranslation.wildfirefly": "添加萤火虫和新的萤火虫灯笼至Minecraft。"
+  "modmenu.summaryTranslation.wildfirefly": "添加萤火虫和新的萤火虫灯笼至 Minecraft。",
+  "modmenu.descriptionTranslation.wildfirefly": "添加萤火虫和新的萤火虫灯笼至 Minecraft。",
+  
+  "text.autoconfig.wildfirefly.title": "野生萤火虫选项",
+  "text.autoconfig.wildfirefly.option.flickeringFirefly": "萤火虫闪烁着。"
 }
